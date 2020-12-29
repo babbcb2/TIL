@@ -62,3 +62,10 @@
 - `git status`
 
 - 현재 git 상태를 출력
+
+  
+
+### 7. bash
+
+- `git bash`
+- CLI 창을 깨끗이 한다. 
