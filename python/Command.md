@@ -37,8 +37,9 @@
 
 * 인터프리터 기반의 언어
 * 예약어 변수명으로 사용 불가
-  *  False, def, if, raise, None, del, import, return, True, elif, in, try, and, else, is, while, as, except, ambda, with, assert, finally, nonlocal, yield, break, for, not, class, from, or, continue, global, pass
-
+  
+*  False, def, if, raise, None, del, import, return, True, elif, in, try, and, else, is, while, as, except, ambda, with, assert, finally, nonlocal, yield, break, for, not, class, from, or, continue, global, pass
+  
 * 변수선언 방법
 
   * Camel case : 함수정의시 많이 사용하는 방법 numberOfCollage (권장, 많이사용한다)
@@ -121,15 +122,6 @@ print(rsult)
     print (a[-1])
     ```
 
-* 
-
-  a = []
-  print (type(a))
-  a = list()
-  print (type(a))
-  a = [1,2,3]
-  print (a)
-
 * **`tuple`**
 
   ```
@@ -167,16 +159,12 @@ print(rsult)
   print('p','y','t','h','o','n', sep="-")
   ```
 
-  
-
 * end
 
   ```
   print ('welcome to ', end="")
   print ('IT News')
   ```
-
-
 
 * format  사용법 (d, s, f)
 
