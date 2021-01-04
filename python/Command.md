@@ -79,26 +79,30 @@ a = 123
 b = 3.14
 c = 3.14E10
 
-print(type(a))
-print(type(b))
-print(type(c))
+print(type(a)) ==> 123
+print(type(b)) ==> 3.14
+print(type(c)) ==> 3.14~
 
 div = 3/4
 print (div)
+==> 0.75
 
 rsult = 3 ** 3
 print(rsult)
+==> 27
 
 rsult = 10 % 3
 print(rsult)
+=> 1
 
 rsult = 10 // 3
 print(rsult)
+==> 3
 ```
 
 
 
-#### sequence 
+### sequence 
 
 * **`list`**
 
@@ -111,23 +115,23 @@ print(rsult)
     ```
     a = []
     print (type(a))
+    ==> <class 'list'>
+    
     a = list()
     print (type(a))
+    ==> <class 'list'>
+    
     a = [1,2,3]
     print (a)
-    #indexing
-    print (a[0])
-    print (a[1])
-    print (a[2])
-    print (a[-1])
+    ==> [1,2,3]
     ```
 
 * **`tuple`**
 
   ```
   a = ()
-  
   print(type(a))
+  ==> <class 'tuple'>
   ```
 
 * indexing
@@ -143,27 +147,39 @@ print(rsult)
 
   ```
   print(a[0:2])
+  ==> [1, 2]
   
   a = [1, 2, 'hello', 3.14]
   a = [1, 2, ['show','me','the','money'], 3.14]
   print(type(a[2]))
+  ==> <class 'list'>
+  
   print(a[2][2:])
+  ==> ['the', 'money']
   
   a = [1,2,3]
   b = [4,5,6]
   print(a+b)
+  ==> [1, 2, 3, 4, 5, 6]
   print(a*3)
+  ==> [1, 2, 3, 1, 2, 3, 1, 2, 3]
   
   print('p','y','t','h','o','n')
+  ==> p y t h o n
   print('p','y','t','h','o','n', sep="")
+  ==> python
   print('p','y','t','h','o','n', sep="-")
+  ==> p-y-t-h-o-n
   ```
 
 * end
 
+  * 한줄로 출력을 원할경우 맨끝에 end  작성
+
   ```
   print ('welcome to ', end="")
   print ('IT News')
+  ==> welcome to IT News
   ```
 
 * format  사용법 (d, s, f)
@@ -172,8 +188,8 @@ print(rsult)
 
   ```
   a = list(a)
-  
   print(type(a))
+  ==> <class 'list'>
   ```
 
   
