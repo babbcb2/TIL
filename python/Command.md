@@ -9,7 +9,7 @@
 ### python 장점
 
 - 상대적으로 쉽다
-- Interactive programing
+- Interactive programing (대화식 모드)
 - 분석, 통계에 관련된 library 풍부하다
 - 오픈소스
 - R에 비해 범용적
@@ -112,6 +112,12 @@ print(rsult)
 
   * range () 이용하여 리스트를 생성하는 방법이 있다.
 
+  * 자료구조에서 중요, 파이썬에서는 배열이 존재하지 않는다.
+
+  * 1차원의 자료구조 : R - Vector
+
+  * 순서 0 (index 부여 0 ~), 중복 0, 수정, 삭제가능
+
     ```
     a = []
     print (type(a))
@@ -128,10 +134,30 @@ print(rsult)
 
 * **`tuple`**
 
+  * 순서 o , 중복 o , 수정 x , 삭제 x
+  * 읽기 전용 (immutable)
+  * () 선언 가능 하다.
+
   ```
   a = ()
   print(type(a))
   ==> <class 'tuple'>
+  
+  사용자의 편의를 위해서 괄호없이 만들 수 있다.
+  myTuple = 1,2,3,4,5
+  multiTuple = (100, 1000, 'Ace','Base','Captine')
+  print('tuple print - ',multiTuple)
+  
+  range01 = range(10)
+  print(range01)
+  --> 
+  
+  range02 = range(1, 11, 2)
+  print(range02)
+  
+  even = tuple(range(2, 100, 2))
+  print(even)
+  even[0] = 1
   ```
 
 * indexing
@@ -170,6 +196,18 @@ print(rsult)
   ==> python
   print('p','y','t','h','o','n', sep="-")
   ==> p-y-t-h-o-n
+  
+  seqText = 'Talk is cheap. Show me the code'
+  print(seqText[3]) #3번째 칸의 값을 출력
+  --> k  
+  print(seqText[-1]) #맨 마지막칸의 값을 출력
+  --> e  
+  print(seqText[0:4]) #0 ~ 3번째 칸의 값을 출력
+  --> Talk  
+  print(seqText[-6:])  #맨 마지칸으로부터 6번째칸부터 마지칸까지의 값을 출력
+  --> e code
+  print(seqText[ : : -1]) #값을 역순으로 출력
+  --> edoc eht em wohS .paehc si klaT  
   ```
 
 * end
@@ -187,9 +225,266 @@ print(rsult)
 * type casting
 
   ```
-  a = list(a)
-  print(type(a))
-  ==> <class 'list'>
+  numStr = "720"
+  numNum = 100
+   
+  print (int(numStr) + numNum)  #문자"720"를 int 함수로 숫자 720 으로 수정
+--> 820
+  print (numStr + str(numNum))  #숫자 100 을 str 함수로 문자 "100" 으로 수정
+  --> 720100
+  
+  year = "2021"
+  print(int(year)-1)  #문자"2021"를 int 함수로 숫자 2021 으로 수정
+  --> 2020
+  ```
+  
+
+* set {}
+
+  ```
+  setValue = {3,5,7}
+  print(type(setValue))
+  --> <class 'set'>
+  ```
+
+* input ()
+
+  ```
+  inputNumber = input('숫자를 입력하세요:')
+  print(inputNumber)
+  print(type(inputNumber))
+  --> 숫자를 입력하세요: (숫자입력)
+  ```
+
+* string
+
+  * 문자열 조작을 위한 많은 함수를 제공 하고 있다.
+
+  ```
+  아래 문자열에서 '홀'만 출력을 원할경우 
+  
+  string = '홀짝홀짝홀짝홀짝홀짝'
+  print(string[::2])  #첫번째칸으로 시작으로 2칸씩 전진하여 값을 출력한다
+  --> 홀홀홀홀홀
+  ```
+
+* capitalize
+
+  ```
+  string = "python"
+  print("capitalize :", string.capitalize())  ##문자의 첫번째단어를 대문자로 출력
+  --> Python
+  ```
+
+* replace
+
+  ```1
+  phoneNumber = '010-1111-2222'
+  replacePhoneNumber = phoneNumber.replace('-',"")  #replace '-'삭제후 출력
+  print(replacePhoneNumber)
+  --> 01011112222
+  ```
+
+* split
+
+  ```
+  아래 문자열에서 도메인만 출력하고 싶다면?
+  
+  url = "http://www.naver.com"
+  urlSplit = url.split('.')
+  print(urlSplit)
+  --> ['http://www', 'naver', 'com']  #슬라이싱처리
+  
+  print('domain:',urlSplit[-1])  #슬라이싱처리 후 맨끝의 값 출력
+  --> domain: com
+  ```
+
+* strip(), rstrip(), lstrip ()
+
+  * 문자열에서 공백 제거 함수
+
+  ```
+  companyName = '   samsung    '
+  print(companyName.strip(),len(companyName.strip()))
+  print(companyName.rstrip(),len(companyName.rstrip()))
+  print(companyName.lstrip(),len(companyName.lstrip()))
+  --> 
+  samsung 7
+     samsung 10
+  samsung     11
+  ```
+
+* upper(), lower()
+
+  * 대문자, 소문자 변환 함수
+
+  ```
+  print(companyName.upper())  #문자 전체를 대문자로 변경
+  --> SAMSUNG
+  ```
+
+* count(), find(), index()
+
+  * 문자의 빈도  count()
+  * 문자 찾기 find()
+  * 문자의 인덱스 index()
+
+  ```
+  print(len(brandName),brandName.count('c'),brandName.find('f'))
+  --> 8 3 -1
+  ```
+
+* append(), insert()
+
+  * 요소를 추가하는 함수
+  * append() : 맨뒤에  값 추가
+  * insert() : 맨 앞에 값 추가 
+
+  ```
+  a.append(4)
+  print(a)
+  --> [5, 2, 3, 4]
+  a.insert(0,6)
+  print(a)
+  --> [6, 5, 2, 3, 4]
+  a.sort()
+  print(a)
+  --> [2, 3, 4, 5, 6]
+  a.reverse()
+  print(a)
+  --> [6, 5, 4, 3, 2]
+  
+  moveiRank = ['원더우먼','해리포터','겨울왕구2','가타카','국제수사','반도']
+  # 1.해당 리스트에 '배트맨'을 추가한다면?
+  moveiRank.append('배트맨')
+  print('append - 배트맨', moveiRank)
+  # 2. 원더우먼과 해리포터 사이에 '씽'을 추가한다면?
+  moveiRank.insert(1,'씽')
+  print('insert - 씽',moveiRank)
+  # 3. 리스트에서 '반도'를 삭제한다면?
+  moveiRank.remove('반도')
+  print(moveiRank)
+  --> 
+  append - 배트맨 ['원더우먼', '해리포터', '겨울왕구2', '가타카', '국제수사', '반도', '배트맨']
+  insert - 씽 ['원더우먼', '씽', '해리포터', '겨울왕구2', '가타카', '국제수사', '반도', '배트맨']
+  ['원더우먼', '씽', '해리포터', '겨울왕구2', '가타카', '국제수사', '배트맨']
+  ```
+
+* max, min, sum
+
+  * 최대값, 최소값
+
+  ```
+  scoreData = [1,2,3,4,5,6,7]
+  print("max" ,max(scoreData))
+  print("min" ,min(scoreData))
+  print("sum" ,sum(scoreData))
+  --> 
+  max 7
+  min 1
+  sum 28
+  ```
+
+
+
+### mpping type
+
+* dict
+
+  * dictionary 는 key 와 value의 대응 관계 type
+  * Hash 또는 Associative Array 와 유사한 구조
+  * {}
+  * 순서 x , 키 중복 x , 수정 o , 삭제 o
+
+  ```
+  temp = {}
+  print(type(temp))
+  dict01 = {
+      'name' : 'seop',
+      'age' : 49,
+      'address' : 'kwangju',
+      'birth' : '730910',
+      'gender' : 'm',
+  }
+  print('dict - ', type(dict01), dict01)
+  
+  --> 
+  <class 'dict'>
+  dict -  <class 'dict'> {'name': 'seop', 'age': 49, 'address': 'kwangju', 'birth': '730910', 'gender': 'm'}
+  
+  dict 요소를 추가하는 방법
+  dict01['marriage'] = True
+  print('dict - ', type(dict01), dict01)
+  --> 
+  dict -  <class 'dict'> {'name': 'seop', 'age': 49, 'address': 'kwangju', 'birth': '730910', 'gender': 'm', 'marriage': True}
+  ```
+
+* keys , values , items
+
+  ```
+  print('dict_keys - ', dict01.keys(),type(dict01.keys()))
+  --> 
+  dict_keys -  dict_keys(['name', 'age', 'address', 'birth', 'gender', 'marriage']) <class 'dict_keys'>
+  
+  
+  print('dict_values - ', dict01.values(),type(dict01.values()))
+  -->
+  dict_values -  dict_values(['seop', 49, 'kwangju', '730910', 'm', True]) <class 'dict_values'>
+  
+  
+  print('dict_items - ', dict01.items(),type(dict01.items()))
+  -->
+  dict_items -  dict_items([('name', 'seop'), ('age', 49), ('address', 'kwangju'), ('birth', '730910'), ('gender', 'm'), ('marriage', True)]) <class 'dict_items'>
+  ```
+
+* looping
+
+* for 문
+
+  ```
+  for item in collection
+  
+  for key in dict01.keys() :
+      print('key : {}, value : {}'.format(key,dict01.get(key)))
+  -->
+  key : name, value : seop
+  key : age, value : 49
+  key : address, value : kwangju
+  key : birth, value : 730910
+  
+  for value in dict01.values():
+      print('value : {}'.format(value))
+  -->
+  value : seop
+  value : 49
+  value : kwangju
+  value : 730910
+  value : m
+  value : True
+  
+  for (key, value) in dict01.items():
+      print('key : {}, value : {}'.format(key,value))
+  -->
+  key : name, value : seop
+  key : age, value : 49
+  key : address, value : kwangju
+  key : birth, value : 730910
+  key : gender, value : m
+  key : marriage, value : True
+  ```
+
+* del
+
+  * 삭제
+
+  ```
+  print ('dict03 - ', type(dict01), dict01)
+  del dict01['gender']
+  print('dict01 del - ', type(dict01),dict01)
+  --> 
+  dict03 -  <class 'dict'> {'name': 'seop', 'age': 49, 'address': 'kwangju', 'birth': '730910', 'gender': 'm', 'marriage': True}
+  dict01 del -  <class 'dict'> {'name': 'seop', 'age': 49, 'address': 'kwangju', 'birth': '730910', 'marriage': True}
   ```
 
   
+
