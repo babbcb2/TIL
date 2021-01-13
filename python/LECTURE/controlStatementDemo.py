@@ -34,7 +34,7 @@ python)
 if True : 참이라면~ 
 '''
 
-# 위 값이 3의 배수인지 5의 배수인지 판별하고 싶다면?
+# 값이 3의 배수인지 5의 배수인지 판별하고 싶다면?
 number = 15
 if (number%3 == 0 & number%5 == 0):
     print('{}은 3과 5의 배수입니다.'.format((number)))
@@ -101,8 +101,10 @@ else:
 # 삼항 연산자
 num      = 9
 result   = 0
-result = num * 2 if num > 5 else num + 2
+result = num * 2 if num > 5               else num + 2
 print('삼항 연산자',result)
+#
+
 
 # 문제 1)
 # 사용자로부터 하나의 값을 입력받아(input)
