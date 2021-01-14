@@ -241,6 +241,107 @@ else:
 # 0~20	 E
 # 사용자로부터 score를 입력받아 학점을 출력하라
 
-User = int(input"enter your score")
+User = int(input("enter your score"))
+if 100 => ser > 80 :
+    print("A")
+elif User > 60 :
+    print("B")
+elif User > 40 :
+    print("C")
+elif User > 20 :
+    print("D")
+else:
+    print('F')
 
-if User < 81 in
+# 문제 8)
+# 사용자로부터 세 개의 숫자를 입력 받은 후
+# 가장 큰 숫자를 출력하라.
+# input number1: 10
+# input number2: 9
+# input number3: 20
+
+num = [10,9,20]
+print(max(num))
+
+# 문제 9)
+# 휴대폰 번호 앞자리에 따라 통신사는 아래와 같이 구분된다. 사용자로부터 휴대전화 번호를 입력 받고, 통신사를 출력하는 프로그램을 작성하라.
+# 번호	통신사
+# 011	SKT
+# 016	KT
+# 019	LGU
+# 010	알수없음
+# 휴대전화 번호 입력: 011-345-1922
+
+PhoneNum = str(input('enter your phone Number?'))
+if PhoneNum == '011' :
+    print('SKT 입니다')
+elif PhoneNum == '016' :
+    print('KT 입니다')
+elif PhoneNum == '019' :
+    print('LGT 입니다')
+else:
+    if PhoneNum == '010' :
+        print('알수없음')
+
+# 문제 10)
+# 주민등록번호 뒷 자리 7자리 중 첫째 자리는 성별을 나타내는데
+# 1, 3은 남자 2, 4는 여자를 의미한다.
+# 사용자로부터 13자리의 주민등록번호를 입력 받은 후 성별 (남자, 여자)를 출력하는 프로그램을 작성하라.
+# >> 주민등록번호: 821010-1635210
+
+idCard = str(input('enter your ID card number?'))
+if idCard[7] == str(1 or 3) :
+    print('남자입니다')
+else:
+    if idCard[7] == str(2 or 4) :
+    print('여자입니다')
+
+
+# 문제 11)
+# 주민등록번호의 뒷 자리 7자리 중 두번째와 세번째는 지역코드를 의미한다.
+# 주민 등록 번호를 입력 받은 후 출생지가 서울인지 아닌지 판단하는 코드를 작성하라
+# 지역코드	출생지
+# 00 ~ 08	서울
+# 09 ~ 12	부산
+
+idCard = input('enter your ID card number?')
+seoul = ['00','01','02','03','04','05','06','07','08']
+busan = ['09','10','11','12']
+
+if idCard[8:10] in seoul :
+    print('Seoul 입니다'.format(idCard))
+else:
+    if idCard[8:10] in busan :
+        print('Busan 입니다'.format(idCard))
+
+# 문제 12)
+# 어떤 대학교를 졸업하려면 적어도 140학점을 이수해야
+# 하고 평점이 2.0은 되어야 한 다고 하자.
+# 이것을 파이썬 프로그램으로 검사해보자.
+# 사용자에게 이수학점수와 평점을 물어보고 졸업 가능 여부를 출력하는 프로그램을 작성해보자.
+
+credits = float( input("이수한 학점을 입력하세요 : "))
+avg = float( input("평점을 입력하세요 : "))
+if credits >= 140 and avg >= 2 :
+    print('졸업을 축하합니다')
+else:
+    print('졸업학점 미달입니다')
+
+# 문제 13)
+# 1부터 10사이의 난수를 생성하고 숫자를 맞춰보자
+
+from random import randint
+answer = randint(1,5)
+print(answer)
+
+# 문제 14)
+# input()함수를 이용하여 입력받은 숫자가 홀수인지 짝수인지를 판단하는 프로그램을 작성하라.
+# 홀수면 '홀수'라고 출력하고 짝수면 '짝수'라고 출력하시오
+# +, - , / , * , %(나머지 연산자)
+
+inputnumber = int(input("enter your digit : "))
+if inputnumber%2 == 1 :
+    print("홀수")
+    pass
+else :
+    print("짝수")
