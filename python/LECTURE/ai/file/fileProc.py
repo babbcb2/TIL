@@ -46,6 +46,7 @@ def withListFileWriter(fileName, dataset):
             print('idx -', idx)
             file.write('{} - {}\n'.format(idx, dataset[idx]))
 
+
 def withListFileRead(fileName, mode):
     with open(fileName, mode) as file:
         # line = None

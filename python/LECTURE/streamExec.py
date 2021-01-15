@@ -39,6 +39,7 @@ def pickleReader():
         print('파일로딩 -', dictScores, type(dictScores))
     print('객체 직렬화를 통한 파일 저장')
 pickleReader()
+
 '''
 단어가 줄 단위로 저장된 cnt_words.txt 파일에서 10자이하인 단어의 갯수를 카운트하는
 함수를 구현하고 호출 한다면
@@ -53,7 +54,9 @@ def wordCntFunc():
     print('10자 이하의 단어의 갯수는 {}개 입니다.'.format(len(wordList)))
     print(wordList)
 wordCntFunc()
+#
 
+pickleReader
 '''
 special_word.txt 파일에서
 문자가 'c'가 포함된 단어를 출력하는 함수를 만들어서 호출한다면?
@@ -81,6 +84,7 @@ def searchAddfcun():
     dong = input('찾는 동을 입력하세요 :')
     with open(file='./word/zipcode.txt', mode='r', encoding='utf-8') as file :
         line = file.readline()
+        print(line, type(line))
         while line :
             address = line.split('\t')
             if address[3].startswith(dong) and address[3].endswith('동'):

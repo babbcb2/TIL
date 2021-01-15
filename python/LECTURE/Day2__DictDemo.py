@@ -1,5 +1,4 @@
-
-# python mapping type - dict
+# Dict - python mapping type
 # dictionary 는 key 와 value의 대응관계 type
 # Hash 또는 Associative Array 와 유사한 구조
 # {}
