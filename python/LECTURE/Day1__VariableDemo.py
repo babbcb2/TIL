@@ -99,7 +99,7 @@ print(a[0:1])       # --> s  만 출력 (index 0 까지의 값 출력)
 one = 1
 two = 2
 print(one,two)
-print('첫번째 값- {}, 두번째 값 - {}'.format(one, two))   # --> one, tow 값을 {} {} 순서에 맞게 출력
+print('첫번째 값- {}, 두번째 값 - {}'.format(one, two))   # --> one, two 값을 {} {} 순서에 맞게 출력
 
 
 # tuple

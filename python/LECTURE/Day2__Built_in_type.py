@@ -8,13 +8,13 @@ strvalue = 'jslim'
 
 print(type(intvalue),type(floatvalue),type(boolvalue),type(strvalue))
 
-# type casting
 
+# type casting 
+# 데이터의 형태를 변경
 numStr = "720"
 numNum = 100
-
-print (int(numStr) + numNum)
-print (numStr + str(numNum))
+print (int(numStr) + numNum)    # --> 820 출력 (숫자)
+print (numStr + str(numNum))    # --> 720100 출력 (문자)
 
 year = "2021"
 print(int(year)-1)
@@ -81,20 +81,23 @@ print(string[::2])
 string = "python"
 print("capitalize :", string.capitalize())
 
-# 문자치환 replace (oldchar, newchar)
+# 문자대체 replace (oldchar, newchar)
+# 특정 문자열을 찾아 다른문자열로 바꾼다
 phoneNumber = '010-1111-2222'
-replacePhoneNumber = phoneNumber.replace('-',"")
+replacePhoneNumber = phoneNumber.replace('-',"")    # '-' > '" 으로 문자열 변경
 print(replacePhoneNumber)
 
 string = 'alsdjfasdf'
 print(string.replace('a',"A"))
 
 # 문자열 split()
-# 아래 문자열에서 도메인만 출력하고 싶다면?
+# 구분자 기준으로 문자열을 분할한다
+
+# 문제) 아래 문자열에서 도메인만 출력하고 싶다면?
 url = "http://www.naver.com"
-urlSplit = url.split('.')
-print(urlSplit)
-print('domain:',urlSplit[-1])
+urlSplit = url.split('.')       # --> 구분자 '.' 기준으로 분리
+print(urlSplit)                 # --> ['http://www', 'naver', 'com'] 출력
+print('domain:',urlSplit[-1])   # --> domain: com 출력
 
 # 문자열에서 공백 제거 함수 : strip(), rstrip(), lstrip()
 # 대문자, 소문자 변환 함수 : upper(), lower()
@@ -102,10 +105,10 @@ companyName = '   samsung    '
 print(companyName.strip(),len(companyName.strip()))
 print(companyName.rstrip(),len(companyName.rstrip()))
 print(companyName.lstrip(),len(companyName.lstrip()))
-
 print(companyName.upper())
 
 # endswitch()
+# 특정문자열로 끝나는지 뒷부분만 비교
 fileName = 'report.txt'
 isExits = fileName.endswith(('xls', 'xlsx','csv'))
 print(isExits, type(isExits))
@@ -119,4 +122,5 @@ print("sample" in myStr)
 # 문자의 인덱스 index()
 
 brandName = 'cocacola'
-print(len(brandName),brandName.count('c'),brandName.find('f'))
+print(len(brandName),brandName.count('c'),brandName.find('f'), brandName.index('a'))
+# --> 8 3 -1 3 출력
