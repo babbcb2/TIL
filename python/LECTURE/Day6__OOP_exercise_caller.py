@@ -1,4 +1,4 @@
-from ai.oop.oopExec import *
+from ai.oop.Day6__OOP_exercise import *
 
 # Marin 생성
 marine01 = Marine(10, 100, 0, 0)

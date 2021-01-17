@@ -1,23 +1,21 @@
-
-# python set type - set (집합)
+# Set (집합)
 # 순서 x , 중복 x
 # {}
 # set([])
-
 temp = {'jslim', 'teacher'}
 print('set - ', temp, type(temp))
 
 temp = set([1,2,3,4,5,5,5,5,5])
-print('set - ', temp, type(temp))
+print('set - ', temp, type(temp))       # --> set -  {1, 2, 3, 4, 5} <class 'set'> 출력
 
 temp = set([1, 3.14, 'pen', False])
 print('set - ', temp, type(temp))
 casting = tuple(temp)
 print('casting - ', casting, casting[1:3],type(casting))
 
-# 교집합 & == intersection() , 합집합 : union(), 차집합 - == difference()
-# 객채(변수, 함수)
-# 객체.
+# 교집합 & == intersection() , 합집합 | == union(), 차집합 - == difference()|
+# 객체(변수, 함수)
+# 객체.변수 / 객체.함수()
 
 set01 = set([1,2,3,4,5])
 set02 = set([3,4,5,6,7])

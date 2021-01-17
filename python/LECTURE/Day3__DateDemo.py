@@ -1,7 +1,6 @@
-
-# python date type
+# Daye type
 from datetime import date, datetime
-# 이거는 datetime 패키지에서 date와 datetime 모듈들을 가져오겠다. 라는 의미입니다.
+# datetime 패키지에서 date, datetime 모듈들을 가져오겠다 라는 의미
 
 today = date.today()
 print('date -',type(today), today, today.year, today.month, today.day)
@@ -22,14 +21,14 @@ today = date.today()
 days = timedelta(days=-1)
 print('오늘 이전 하루 - {}'.format(today+days))
 
-# year, month 관련된 옵션을 필요로 하신다면
 # relativedelta
-
+# year, month 관련된 옵션
 months = relativedelta(months=-2)
 print('두달 전 오늘 - {}'.format(today+months))
+years = relativedelta(years=-1)
+print('일년 전 오늘 - {}'.format(today+years))
 
 from dateutil.parser import parse
-
 userDate = parse("2021-06-04")
 print('parse date -', userDate)
 

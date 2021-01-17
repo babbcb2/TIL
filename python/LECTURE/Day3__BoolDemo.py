@@ -1,4 +1,3 @@
-
 # python bool 타입의 특징
 # bool
 # True(T), False(F)
@@ -11,15 +10,15 @@ xValue = 5  # 0101
 yValue = 0  # 0000  -> 0000 -> 0
             #       -> 0101 -> 5
 
-print(xValue & yValue)  # 0101 & 0000 -> 0
+print(xValue & yValue)      # 0101 & 0000 -> 0
 print(bool(xValue&yValue))
 print(xValue | yValue)
 print(bool(xValue | yValue))
 
 trueValue = True
 falseValue = False
-print(int(trueValue))
-print(int(falseValue))
+print(int(trueValue), trueValue)    # --> 1 True 출력
+print(int(falseValue), falseValue)  # --> 0 False 출력
 
 print(trueValue & falseValue)
 print(trueValue | falseValue)

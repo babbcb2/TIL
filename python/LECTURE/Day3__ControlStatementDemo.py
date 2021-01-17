@@ -1,4 +1,3 @@
-
 # control statemnet
 # if(조건문), for(반복문), while(반복문)
 
@@ -12,9 +11,9 @@ print(name, grade, company)
 
 inputNumber = int(input("Enter your digit(1~100) :"))
 # print(inputNumber%2 == 0)
-if inputNumber%2 == 0 :
+if inputNumber%2 == 0 :     # input값에서 2를 나누고 몫이 0 일 경우
     print('짝수입니다.')
-else:
+else:                       # input값에서 2를 나누고 몫이 0 아닐 경우
     print('홀수입니다.')
 
 # 짝수인지 홀수인지를 판별?
@@ -35,7 +34,7 @@ if True : 참이라면~
 '''
 
 # 값이 3의 배수인지 5의 배수인지 판별하고 싶다면?
-number = 15
+number = int(input('Enter your number?'))
 if (number%3 == 0 & number%5 == 0):
     print('{}은 3과 5의 배수입니다.'.format((number)))
 else:
@@ -62,7 +61,6 @@ else:
     print('{}는 윤년이 아닙니다'.format(year))
 
 
-
 # 윤년 체크 / 윤년이라면 마지막 2월의 마지막일을 체크
 year = int(input('년도를 입력하세요 :'))
 month = int(input('달을 입력하세요 :'))
@@ -78,32 +76,27 @@ else:
     print('{}년, {}월의 마지막 일은 {} 입니다'.format(year, month, year_month[month-1]))
 
 # if ~ in
-area = ['서울','부산','광주','제주']
+Area = ['서울','부산','광주','제주']
 region = '수원'
-if '광주' in area :
+if region in Area :
     pass
 else:
     print('{}지역은 포함하지 않습니다'.format(region)
 
-areaKeyDict = {'서울':100, '광주':200}
+AreaKeyDict = {'서울':100, '광주':200}
 region = '부산'
-if region in areaKeyDict :
+if region in AreaKeyDict :
     pass
 else:
     print ('{}값이 존재 하지 않습니다'.format(region))
 
-city = 10
-if city :
-    print ('true -', city)
-else:
-    print ('false -', 'Please enter your city')
 
 # 삼항 연산자
 num      = 9
 result   = 0
-result = num * 2 if num > 5               else num + 2
+result = num * 2    if  num > 5    else num + 2
 print('삼항 연산자',result)
-#
+# num 값이 5보다 클경우 num * 2 출력하고, 아닐경우 num + 2 를 출력
 
 
 # 문제 1)
@@ -114,8 +107,14 @@ print('삼항 연산자',result)
 # 255보다 큰 값이 되는 경우 255을 출력해야한다.
 
 
-bab = int(input('값을 입력하세요:'))
-range01 = range(0,256,1)
+num01 = int(input('Enter your number'))
+range01 = range(0,256)
+if num01 > 255:
+    print('255')
+elif num01 < 0:
+    print('0')
+else:
+    print(num01-20)
 
 '''
 # & == and
@@ -123,5 +122,4 @@ range01 = range(0,256,1)
 # and 논리연산, Ture | False 연산)
 -> x and y 있을 때 x 가 False x 값을 반홥하고
 -> x 가 True y 값을 반환합니다.
-
 '''

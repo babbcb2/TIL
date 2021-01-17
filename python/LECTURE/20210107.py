@@ -3,7 +3,7 @@
 # for ~ in range(start index, end index, step)
 # for ~ in list, dict
 # list comprehension
-from loopStatement import userlist
+from Day4__LoopDemo import userlist
 
 # userList 에서 가져온 값을 tmp 라고 정하고, tmp의 값은 2제곱 한다.
 userList = [1,2,3,4,5,6,7,8,9]
