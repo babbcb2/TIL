@@ -114,3 +114,6 @@ AND     SALARY > 3000000;
 -- TB ¿¬½À
 SELECT  *
 FROM    TB_CLASS;
+
+
+
