@@ -140,5 +140,186 @@ FROM    DUAL;
 SELECT  EMP_NAME,
         HIRE_DATE,
         TO_CHAR(HIRE_DATE, 'YYYY-MM-DD') AS "별칭",
-        TO_CHAR(HIRE_DATE, 'YYYY"년" MM"월" DD"일"')
+        TO_CHAR(HIRE_DATE, 'YYYY"년" MM"월" DD"일"'),
+        SUBSTR(HIRE_DATE, 1, 2) || '년' ||
+        SUBSTR(HIRE_DATE, 4, 2) || '월' ||
+        SUBSTR(HIRE_DATE, 7, 2) || '일' AS 입사일
 FROM    EMPLOYEE ;
+
+-- SUBSTR(문자|날짜)
+
+
+-- TO DATE
+SELECT  TO_DATE('20210112', 'YYYYMMDD')
+FROM    DUAL ;
+
+SELECT  TO_CHAR(TO_DATE('20100101', 'YYYYMMDD'),'YYYY, MON'),
+        TO_CHAR(TO_DATE('041030 143000', 'YYMMDD HH24MISS'), 'DD-MON-YY HH:MI:SS PM')
+FROM    DUAL ;
+
+SELECT  HIRE_DATE        
+FROM    EMPLOYEE
+WHERE   HIRE_DATE = TO_DATE('900401 133030', 'YYMMDD HH24MISS');
+
+SELECT  HIRE_DATE        
+FROM    EMPLOYEE
+WHERE   TO_CHAR(HIRE_DATE, 'YYMMDD') = '900401' ;
+
+
+-- YYYY     - RRRR
+-- 현재세기    이전세기
+SELECT EMP_NAME,
+        HIRE_DATE,
+        TO_CHAR(HIRE_DATE, 'YYRR/MM/DD'),
+        TO_CHAR(HIRE_DATE, 'RRRR/MM/DD')
+FROM    EMPLOYEE
+WHERE   EMP_NAME = '한선기';
+
+
+-- TO NUMBER(CHAR) -> NUMBER
+SELECT  EMP_NO,
+        SUBSTR(EMP_NO, 1, 6),
+        SUBSTR(EMP_NO, 8),
+        TO_NUMBER(SUBSTR(EMP_NO, 1, 6)) + TO_NUMBER(SUBSTR(EMP_NO, 8))
+FROM    EMPLOYEE;
+
+-- NVL
+SELECT  EMP_NAME, SALARY, NVL(BONUS_PCT,0)
+FROM    EMPLOYEE
+WHERE   SALARY > 3500000;
+
+SELECT  EMP_NAME,
+        (SALARY*12)+((SALARY*12)*BONUS_PCT)
+FROM    EMPLOYEE
+WHERE   SALARY > 3500000;
+
+SELECT  EMP_NAME,
+        (SALARY*12)+((SALARY*12)*NVL(BONUS_PCT,0))
+FROM    EMPLOYEE
+WHERE   SALARY > 3500000;
+
+
+SELECT  EMP_NO,
+        DECODE(SUBSTR(EMP_NO,8,1),'1','남자','3','남자','여자' AS GENDER 
+FROM    EMPLOYEES;
+
+SELECT  EMP_ID,
+        EMP_NAME,
+        DECODE(MGR_ID, NULL, 'ADMIN', MGR_ID) AS "MANAGER",
+        NVL(MGR_ID, 'ADMIN') AS "OTHER CASE"
+FROM    EMPLOYEE
+WHERE   JOB_ID = 'J4';
+
+
+-- 직원의 직급별 인상급여를 확인하고 싶다
+-- J7 -> 20%
+-- J6 -> 15%
+-- J5 -> 10%
+-- 나머지 직급은 인상 하지 않는다
+
+SELECT  EMP_NAME,
+        JOB_ID,
+        SALARY,
+        DECODE(JOB_ID,
+            'J7', SALARY * 1.2,
+            'J6', SALARY * 1.15,
+            'J5', SALARY * 1.1,
+            SALARY) AS "인상급여"
+FROM    EMPLOYEE ;      
+
+SELECT  EMP_NAME,
+        JOB_ID,
+        SALARY,
+        CASE JOB_ID
+            WHEN 'J7' THEN SALARY * 1.2
+            WHEN 'J6' THEN SALARY * 1.15
+            WHEN 'J5' THEN SALARY * 1.1
+            ELSE SALARY
+        END AS "인상급여"
+FROM    EMPLOYEE ;   
+
+
+-- Group Function(집계함수, 그룹함수)
+-- Group by
+-- 그룹함수가 SELECT 절 사용되면 다름컬럼 정의는 불가
+-- 그룹함수는 NULL 값 제거후 연산을 하므로 주의요망
+
+SELECT  SUM(SALARY), SUM(DISTINCT SALARY), EMP_NAME
+FROM    EMPLOYEE;
+
+SELECT  AVG(BONUS_PCT),
+        AVG(NVL(BONUS_PCT,0))
+FROM    EMPLOYEE;
+
+-- MIN, MAX, COUNT -> ANY
+SELECT  MIN(SALARY), MAX(SALARY),
+        MIN(HIRE_DATE), MAX(HIRE_DATE),
+        MIN(JOB_ID), MAX(JOB_ID)
+FROM    EMPLOYEE;
+
+-- COUNT
+SELECT  COUNT(*), COUNT(JOB_ID)
+FROM    EMPLOYEE;
+
+
+-- 부서번호가 50 번이거나 부서번호가 존재하지 않는 사원의 이름, 급여를 조회하라
+-- 높은 급여순으로 볼려면? ORDER BY [기준컬럼] [ASC|DESC]
+SELECT  EMP_NAME,
+        SALARY
+FROM    EMPLOYEE
+WHERE   DEPT_ID = '50' OR DEPT_ID IS NULL
+ORDER BY SALARY DESC ;
+
+
+-- 입사일이 03년 1월 1일 이후 이사자들의 이름, 입사일, 부서번호를 조회하라
+-- 단)부서번호가 높은순으로 정렬하고 같으면 입사일이 빠른순서로 정렬하고 같으면 이름 빠른 순서로 정렬한다.
+
+SELECT  EMP_NAME 이름,
+        HIRE_DATE 입사일,
+        DEPT_ID 부서
+FROM    EMPLOYEE
+WHERE   HIRE_DATE > TO_DATE('03/01/01')
+ORDER BY 3 DESC NULLS LAST,
+         2 ASC,
+         1 ASC;
+         
+-- GROUP BY [기준커럼]
+-- 부서별 평균급여
+SELECT  DEPT_ID,
+        ROUND (AVG(SALARY),-5) AS 급여평균
+FROM    EMPLOYEE
+GROUP BY DEPT_ID 
+ORDER BY 급여평균 DESC;
+
+SELECT  DEPT_ID,
+        JOB_ID,
+        ROUND (AVG(SALARY),-5) AS 급여평균
+FROM    EMPLOYEE
+GROUP BY ROLLUP(DEPT_ID, JOB_ID)
+--HAVING  AVG(SALARY) > 3000000
+ORDER BY DEPT_ID ;
+
+-- 성별에 따른 급여 평균을 구한다면?
+-- ORDER BY [기준컬럼]|컬럼인덱스|별칭
+SELECT  DECODE(SUBSTR(EMP_NO,8,1),
+                '1', '남자', '3', '남자', '여자'),
+        ROUND (AVG(SALARY),-5) AS 급여평균
+FROM    EMPLOYEE
+GROUP BY DECODE(SUBSTR(EMP_NO,8,1),
+                '1', '남자', '3', '남자', '여자')
+ORDER BY 2 DESC;
+
+
+SELECT  CASE SUBSTR(EMP_NO,8,1)
+            WHEN '1' THEN '남자'
+            WHEN '3' THEN '남자'
+            ELSE '여자'
+        END,
+        ROUND (AVG(SALARY),-5) AS 급여평균
+FROM    EMPLOYEE
+GROUP BY CASE SUBSTR(EMP_NO,8,1)
+            WHEN '1' THEN '남자'
+            WHEN '3' THEN '남자'
+            ELSE '여자'
+        END
+ORDER BY 2 DESC;
