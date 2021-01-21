@@ -1,9 +1,9 @@
 -- SELECT 구문
 
-SELECT [ *(전체컬럼) | 특정컬럼 | 표현식 | DISTINCT | AS 컬럼별칭 ]
-FROM        테이블이름 ;
-WHERE       조건식
-GROUP BY    표현식
+SELECT [ *(전체컬럼) | 특정컬럼 | 표현식 (SELECT- (SUBQUERY) | DISTINCT | AS 컬럼별칭 ]
+FROM       [ 테이블이름 | JOIN | (SELECT- (SUBQUERY) ]
+WHERE       조건식 | (SELECT- (SUBQUERY)
+GROUP BY    표현식 | (SELECT- (SUBQUERY)
 HAVING      조건식
 ORDER BY    기준컬럼
 
