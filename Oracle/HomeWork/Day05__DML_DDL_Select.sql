@@ -1,0 +1,109 @@
+-- 1. 다음설정을 참조하여 테이블을 생성하시오.
+CREATE TABLE CUSTOMERS(
+    CNO     NUMBER(5) PRIMARY KEY,
+    CNAME   VARCHAR2(10) NOT NULL,
+    ADDRESS VARCHAR2(50) NOT NULL,
+    EMAIL   VARCHAR2(20) NOT NULL,
+    PHONE   VARCHAR2(20) NOT NULL
+)
+SELECT *
+FROM    CUSTOMERS
+DROP TABLE CUSTOMERS
+
+CREATE TABLE ORDERS(
+    ORDERNO     NUMBER(10) PRIMARY KEY,
+    ORDERDATE   DATE DEFAULT SYSDATE NOT NULL,
+    ADDRESS     VARCHAR2(50) NOT NULL,
+    PHONE       VARCHAR2(20) NOT NULL,
+    STATUS      VARCHAR2(20) NOT NULL CHECK(STATUS IN ('결제완료','배송중','배송완료')),
+    CNO         NUMBER(5) NOT NULL,
+    FOREIGN KEY (CNO) REFERENCES CUSTOMERS (CNO)
+)
+SELECT  *
+FROM    ORDERS
+DROP TABLE ORDERS
+
+
+CREATE TABLE PRODUCTS(
+    PNO         NUMBER(5) PRIMARY KEY,
+    PNAME       VARCHAR2(20) NOT NULL,
+    COST        NUMBER(8) DEFAULT 0 NOT NULL,
+    STOCK       NUMBER(5) DEFAULT 0 NOT NULL 
+)
+SELECT  *
+FROM    PRODUCTS
+DROP TABLE PRODUCTS
+
+
+
+CREATE TABLE ORDERDETAIL(
+    ORDERNO     NUMBER(10) PRIMARY KEY,
+    PNO         NUMBER(5) NOT NULL,
+    QTY         NUMBER(5) DEFAULT 0,
+    COST        NUMBER(5) DEFAULT 0,
+    FOREIGN KEY (ORDERNO) REFERENCES ORDERS (ORDERNO),
+    FOREIGN KEY (PNO) REFERENCES PRODUCTS (PNO)
+)
+SELECT  *
+FROM    ORDERDETAIL
+DROP TABLE ORDERDETAIL
+
+-- 2. PRODUCTS 테이블에 다음 데이터를 입력하시오.
+INSERT INTO PRODUCTS VALUES(1001, '삼양라면', 1000, 200)
+INSERT INTO PRODUCTS VALUES(1002, '새우깡', 1500, 500)
+INSERT INTO PRODUCTS VALUES(1003, '월드콘', 2000, 350)
+INSERT INTO PRODUCTS VALUES(1004, '빼빼로', 2000, 700)
+INSERT INTO PRODUCTS VALUES(1005, '코카콜라', 1800, 550)
+INSERT INTO PRODUCTS VALUES(1006, '환타', 1600, 300)
+
+SELECT  *
+FROM    PRODUCTS
+
+
+-- 3. customers 테이블에 다음 데이터를 입력하시오.
+INSERT INTO CUSTOMERS VALUES(101, '김철수', '서울 강남구', 'cskim@naver.com', '899-6666')
+INSERT INTO CUSTOMERS VALUES(102, '이영희', '부산 서면', 'yhlee@empal.com', '355-8882')
+INSERT INTO CUSTOMERS VALUES(103, '최진국', '제주 동광양', 'jkchoi@gmail.com', '852-5764')
+INSERT INTO CUSTOMERS VALUES(104, '강준호', '강릉 홍제동', 'jhkang@hanmail.com', '559-7777')
+INSERT INTO CUSTOMERS VALUES(105, '민병국', '대전 전민동', 'bgmin@hotmail.com', '559-8741')
+INSERT INTO CUSTOMERS VALUES(106, '오민수', '광주 북구', 'msoh@microsoft.com', '542-9988')
+SELECT  *
+FROM    CUSTOMERS
+
+-- 4. 다음과 같은 주문 정보를 orders 테이블과 orderdetail 테이블에 입력하시오. 
+--    cno는 customers 테이블에서 검색하여 입력할 것. orders에 1건, orderdetail에 1건을 입력한다.
+--    “김철수(101)가 3일전에 삼양라면(1001)을 개당 1000원에 50개 주문하였다."
+
+SELECT *
+FROM    CUSTOMERS
+
+INSERT INTO ORDERS VALUES (1 , SYSDATE - 3 , '서울 강남구', '899-6666', '결제완료', 101)
+INSERT INTO ORDERDETAIL VALUES (1, 1001, 50, 100)
+
+SELECT  *
+FROM    ORDERS
+SELECT  *
+FROM    ORDERDETAIL
+
+
+
+-- 5.위와 같은 주문 정보에서 해당 상품(products)의 재고(stock)을 수정하시오.
+
+UPDATE  PRODUCTS
+SET     STOCK = 200 - 50
+WHERE   PNO = 1001
+
+SELECT  *
+FROM    PRODUCTS
+
+-- 6. 다음과 같은 주문 정보를 orders 테이블과 orderdetail 테이블에 입력하시오. cno는 customers 테이블에서 검색하여 입력할 것.
+--    orders에 1건, orderdetail에 2건을 입력한다.
+--    “이영희(102)가 이틀전에 새우깡(1002)을 개당 1500원에 100개, 월드콘(1003)을 개당 2000원에 150개주문하였다.”
+
+INSERT INTO ORDERS VALUES (2 , SYSDATE - 2 , '부산 수영구', '337-5000', '결제완료', 102)
+INSERT INTO ORDERDETAIL VALUES (2, 1002, 100, 1500)
+INSERT INTO ORDERDETAIL VALUES (,1003, 150, 2000)
+
+
+SELECT  *
+FROM    ORDERDETAIL
