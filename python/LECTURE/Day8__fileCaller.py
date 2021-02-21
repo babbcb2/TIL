@@ -1,5 +1,5 @@
 
-from ai.file.fileProc import *
+from ai.file.Day8__fileProc import *
 # single line text inout
 fileStream('file/hello.txt','w')
 

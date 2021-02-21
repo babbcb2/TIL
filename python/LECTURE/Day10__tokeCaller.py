@@ -1,5 +1,5 @@
 
-from ai.file.tokenProc import *
+from ai.file.Day10__tokenProc import *
 
 palindromFlag = isPalindrom()
 if palindromFlag:

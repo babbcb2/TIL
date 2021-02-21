@@ -20,7 +20,7 @@ def functionName():
 #from digital.python import packageFunction
 #packageFunction.printCoins()
 
-from digital.python import packageFunction as f
+from digital.python import Day4__packageFunction as f
 rtnMsg = f.returnFunc()
 print('call returnFunc -',rtnMsg)
 

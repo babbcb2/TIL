@@ -61,8 +61,8 @@ def outerFunc(func):
 def userFunc():
     print('userFunc 함수가 수행되었습니다')
 
-#decoratorFunc = outerFunc(userFunc)
-#decoratorFunc()
+decoratorFunc = outerFunc(userFunc)
+decoratorFunc()
 
 import time
 def userOuterFunc(func):
