@@ -345,3 +345,62 @@ if inputnumber%2 == 1 :
     pass
 else :
     print("짝수")
+
+print('hello wolrd')
+
+print("안녕하세요.\n 만나서 \t\t 반갑습니다")
+
+print ("오늘은", "일요일")
+
+print('naver', 'kakao', 'sk', 'samsung', sep=';')
+
+print('naver', 'kakao', 'sk', 'samsung', sep='/')
+
+print("first", end="")
+print("second")
+
+samsung = 50000
+sum = samsung * 10
+print(sum)
+
+s = "hello"
+t = "python"
+print(s + "!", t)
+
+a = "132"
+print (type(a))
+
+num_str = "720"
+print (type(int(num_str)))
+
+num = 100
+print(type(str(num)))
+
+data = "15.79"
+data2 = float(data)
+print (data2, type(data2))
+
+year = "2020"
+print (int(year)-1)
+print (int(year)-2)
+
+air = 48584
+card = 36
+print (air * card)
+
+
+lang = 'python'
+print(lang[0], lang[2])
+
+license_plate = "24가 2201"
+print(license_plate[-4:])
+
+string = "홀짝홀짝홀짝"
+print (string[::2])
+
+string_01 = "PYTHON"
+print (string_01[::-1])
+
+Phone_number = "010-1111-2222"
+Phone_number = Phone_number.replace("-", " ")
+print (Phone_number)
